@@ -1,20 +1,21 @@
-#include <stdio.h>
+#include<stdio.h>
 
-/*
- * main - Entry point
- *
- * Description: prints _putchar using putchar protoype
- *
- * Return: Always 0 (Success)
- */
+/**
+*main -  Entry point
+*
+*Description: prints putchar using putchar prototype
+*
+*Return: Always 0 (Success)
+*
+*/
 
 int main(void)
 {
-	char table[] = "_putchar";
-	int i;
+	char str[] = "_putchar";
+	int ch;
 
-	for (i = 0; i < 8; i++)
-		_putchar(table[i])
+	for (ch = 0; ch < 8; ch++)
+		_putchar(str[ch]);
 	_putchar('\n');
 
 	return (0);
