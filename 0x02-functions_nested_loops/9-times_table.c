@@ -9,21 +9,18 @@ void times_table(void)
 
 	for (row = 0; row <= 9; row++)
 	{
-		for (column = 0; column <= 9; column++)
+		_putchar(48);
+		for (column = 1; column <= 9; column++)
 		{
+			_putchar(',');
+			_putchar(' ');
 			result = row * column;
-			if (column != 0)
-			{
-				_putchar(',');
-				if (result < 10)
-					_putchar(' ');
-				_putchar(' ');
-			}
-			if (result >= 10)
-				_putchar((result / 10) + '0');
+			if (result <= 9)
+				_putchar((' ');
 			else
-				_putchar(' ');
-			_putchar((result % 10) + '0');
+				_putchar((result % 10) + 48);
+
+			_putchar((result % 100 + 48);
 		}
 		_putchar('\n');
 	}
