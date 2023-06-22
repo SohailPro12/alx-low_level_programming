@@ -3,28 +3,23 @@
 /**
  * print_triangle - Prints a triangle
  *
- * @size: The size of the triangle
+ * @n: The size of the triangle
  *
- * Return: Always 0 (Success)
  */
 
-void print_triangle(int size)
+void print_diagonal (int n)
 {
-	int i, j;
-
-	if (size <= 0)
+	int postn, space;
+	
+	if (n <= 0)
 		_putchar('\n');
 	else
 	{
-		for (i = 1; i <= size; i++)
+		for (postn = 1; postn <= n; postn++)
 		{
-			for (j = 1; j <= i; j++)
-			{
-				if ((i + j) <= size)
-					_putchar(' ');
-				else
-					_putchar('#');
-			}
+			for (space = 1; space <= postn; space++)
+				putchar(' ');
+			_putchar(92);/*is equal to '/' char*/
 			_putchar('\n');
 		}
 	}
