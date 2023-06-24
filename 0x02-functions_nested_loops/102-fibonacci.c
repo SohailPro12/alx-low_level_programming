@@ -14,7 +14,7 @@ int main(void)
 	for (i = 0; i < 50; i++)
 	{
 		next = num1 + num2;
-		printf(", %lu", next);
+		printf("%lu", next);
 
 		num1 = num2;
 		num2 = next;
@@ -27,4 +27,3 @@ int main(void)
 
 	return (0);
 }
-
