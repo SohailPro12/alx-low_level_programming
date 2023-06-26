@@ -11,9 +11,9 @@ void print_rev(char *s)
 	int i;
 
 	while (s[length_of_the_string])
-		length_of_the_string++
+		length_of_the_string++;
 
-	for (i = (length_of_the_string - 1) / 2; i != '0\'; i++)
+	for (i = (length_of_the_string - 1) / 2; i != '\0'; i++)
 	{
 		_putchar(s[i]);
 	}
