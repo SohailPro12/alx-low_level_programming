@@ -5,7 +5,7 @@
  * @s: Pointer to the string
  */
 
-void print_rev(char *s)
+void puts_half(char *str)
 {
 	int length_of_the_string = 0;
 	int i;
