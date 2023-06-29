@@ -2,6 +2,23 @@
 #include <stdio.h>
 
 /**
+ * reverse_string - Reverses a string.
+ * @str: The string to reverse.
+ */
+void reverse_string(char *str)
+{
+	int i, j;
+	char temp;
+
+	for (i = 0, j = strlen(str) - 1; i < j; i++, j--)
+	{
+		temp = str[i];
+		str[i] = str[j];
+		str[j] = temp;
+	}
+}
+
+/**
  * infinite_add - Adds two numbers.
  * @n1: The first number.
  * @n2: The second number.
@@ -12,50 +29,35 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, k, l, m, sum, carry;
-	char temp;
+	int i, j, k, sum, carry;
 
-	for (i = 0; n1[i] != '\0'; i++)
-		;
-	for (j = 0; n2[j] != '\0'; j++)
-		;
-	if (i > size_r || j > size_r)
-		return (0);
-
+	i = strlen(n1) - 1;
+	j = strlen(n2) - 1;
 	carry = 0;
-	k = i - 1;
-	l = j - 1;
+	k = 0;
 
-	for (m = 0; k >= 0 || l >= 0; k--, l--, m++)
+	while (i >= 0 || j >= 0 || carry != 0)
 	{
 		sum = carry;
-		if (k >= 0)
-			sum += n1[k] - '0';
-		if (l >= 0)
-			sum += n2[l] - '0';
 
+		if (i >= 0)
+			sum += n1[i] - '0';
+		if (j >= 0)
+			sum += n2[j] - '0';
+
+		r[k] = (sum % 10) + '0';
 		carry = sum / 10;
-		r[m] = (sum % 10) + '0';
-	}
 
-	if (carry > 0)
-	{
-		if (m >= size_r)
+		i--;
+		j--;
+		k++;
+
+		if (k >= size_r)
 			return (0);
-		r[m++] = carry + '0';
 	}
 
-	if (m >= size_r)
-		return (0);
-
-	r[m] = '\0';
-	for (k = 0, l = m - 1; k < l; k++, l--)
-	{
-		temp = r[k];
-		r[k] = r[l];
-		r[l] = temp;
-	}
+	r[k] = '\0';
+	reverse_string(r);
 
 	return (r);
 }
-
