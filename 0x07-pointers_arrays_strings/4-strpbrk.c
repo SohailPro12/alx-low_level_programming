@@ -10,11 +10,13 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
-	int i = 0, j = 0;
-	char *match = NULL;
+	int i, j;
+	char *match;
 
+	i = 0;
 	while (s[i] != '\0')
 	{
+		j = 0;
 		while (accept[j] != '\0')
 		{
 			if (s[i] == accept[j])
@@ -25,8 +27,7 @@ char *_strpbrk(char *s, char *accept)
 			j++;
 		}
 		i++;
-		j = 0;
 	}
 
-	return (match);
+	return (0);
 }
