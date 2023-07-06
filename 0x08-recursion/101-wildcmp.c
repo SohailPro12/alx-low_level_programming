@@ -1,49 +1,61 @@
 #include "main.h"
 
-int check_wildcmp(char *s1, char *s2, char *last);
-
 /**
- * wildcmp - Compares two strings
- * and checks if they can be considered identical
- * @s1: The first string
- * @s2: The second string
- *
- * Return: 1 if the strings can be considered identical, 0 otherwise
+ * wildcmp - compare two strings with "wildcard expansion" capabilities
+ * @s1: string 1
+ * @s2: string 2
+ * Return: 1 if strings can be considered identical, else 0
  */
+
 int wildcmp(char *s1, char *s2)
-{
-	return (check_wildcmp(s1, s2, NULL));
-}
-
-/**
- * check_wildcmp - Recursive helper function to check if strings are identical
- * @s1: The first string
- * @s2: The second string
- * @last: Pointer to the last matched character
- *
- * Return: 1 if the strings can be considered identical, 0 otherwise
- */
-int check_wildcmp(char *s1, char *s2, char *last)
 {
 	if (*s1 == '\0' && *s2 == '\0')
 		return (1);
-
-	if (*s1 == *s2)
-		return (check_wildcmp(s1 + 1, s2 + 1, s1));
-
-	if (*s2 == '*')
+	else if (*s1 == '\0' || *s2 == '\0')
 	{
-		if (*s1 == '\0')
-			return (check_wildcmp(s1, s2 + 1, last));
-
-		if (*(s2 + 1) != '*')
-			return (check_wildcmp(s1 + 1, s2, s1));
-
-		return (check_wildcmp(s1, s2 + 1, last));
+		if (*s1 == '\0' && *s2 == '*')
+			return (wildcmp(s1, ++s2));
+		else if (*s1 == '*' && *s2 == '\0')
+			return (wildcmp(++s1, s2));
+		return (0);
 	}
 
-	if (last)
-		return (check_wildcmp(last + 1, s2, last));
+	if (*s1 == *s2)
+	{
+		return (wildcmp(++s1, ++s2));
+	}
+	else if (*s1 == '*')
+	{
+		if (*(s1 + 1) == '*')
+			return (wildcmp(++s1, s2));
+		return (wildcmp(s1, findsrc(s2, *(s1 + 1), 0, 0) + s2));
+	}
+	else if (*s2 == '*')
+	{
+		if (*(s2 + 1) == '*')
+			return (wildcmp(s1, ++s2));
+		return (wildcmp(s1 + findsrc(s1, *(s2 + 1), 0, 0), s2));
+	}
 
 	return (0);
+
+}
+
+/**
+ * findsrc - find the next occurrence of character c in string s
+ * @s: string
+ * @c: character to find
+ * @i: index to start searching from
+ * @p: previous occurrence index
+ * Return: index of the next occurrence of c in s, or p + 1 if not found
+ */
+
+int findsrc(char *s, char c, int i, int p)
+{
+	if (*(s + i) == '\0')
+		return (p + 1);
+	else if (*(s + i) == c || *(s + i) == '*')
+		p = i;
+
+	return (findsrc(s, c, i + 1, p));
 }
