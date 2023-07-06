@@ -3,7 +3,8 @@
 int check_wildcmp(char *s1, char *s2, char *last);
 
 /**
- * wildcmp - Compares two strings and checks if they can be considered identical
+ * wildcmp - Compares two strings
+ * and checks if they can be considered identical
  * @s1: The first string
  * @s2: The second string
  *
@@ -32,13 +33,13 @@ int check_wildcmp(char *s1, char *s2, char *last)
 
 	if (*s2 == '*')
 	{
-        if (*s1 == '\0')
+		if (*s1 == '\0')
+			return (check_wildcmp(s1, s2 + 1, last));
+
+		if (*(s2 + 1) != '*')
+			return (check_wildcmp(s1 + 1, s2, s1));
+
 		return (check_wildcmp(s1, s2 + 1, last));
-
-	if (*(s2 + 1) != '*')
-		return (check_wildcmp(s1 + 1, s2, s1));
-
-	return (check_wildcmp(s1, s2 + 1, last));
 	}
 
 	if (last)
