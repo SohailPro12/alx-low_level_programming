@@ -18,7 +18,7 @@ int is_prime_helper(int n, int div)
 	if (div * div > n)
 		return (1);
 
-		return (is_prime_helper(n, div + 1));
+	return (is_prime_helper(n, div + 1));
 }
 
 /**
