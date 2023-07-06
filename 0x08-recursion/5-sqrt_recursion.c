@@ -1,21 +1,21 @@
 #include "main.h"
 
 /**
- * sqrt_recursive - Helper function to calculate the square root recursively
+ * square - Helper function to calculate the square root recursively
  * @n: The number to calculate the square root of
- * @g: The current guess for the square root
+ * @val: The current value to check
  *
  * Return: The square root if found, -1 otherwise
  */
-int sqrt_recursive(int n, int g)
+int square(int n, int val)
 {
-	if (g * g == n)
-		return (g);
+	if (val * val == n)
+		return (val);
 
-	if (g * g > n)
+	if (val * val > n)
 		return (-1);
 
-		return (sqrt_recursive(n, g + 1));
+	return (square(n, val + 1));
 }
 
 /**
@@ -26,8 +26,5 @@ int sqrt_recursive(int n, int g)
  */
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-		return (-1);
-
-		return (sqrt_recursive(n, 0));
+	return (square(n, 1));
 }
