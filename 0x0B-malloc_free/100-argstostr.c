@@ -23,7 +23,7 @@ char *argstostr(int ac, char **av)
 			total_len++;
 			len++;
 		}
-		total_len++;
+		total_len++; /* Account for space character */
 	}
 
 	str = malloc(sizeof(char) * (total_len + 1));
@@ -42,10 +42,10 @@ char *argstostr(int ac, char **av)
 			str++;
 			len++;
 		}
-		*str = ' ';
+		*str = ' '; /* Add space character between arguments */
 		str++;
 	}
 
-	*str = '\0';
+	*str = '\0'; /* Add null terminator at the end */
 	return (concat_str);
 }
