@@ -1,51 +1,44 @@
 #include "main.h"
 
 /**
- * argstostr - concatenates all the arguments of a program
- * @ac: the argument count
- * @av: the argument vector
+ * argstostr - Concatenates all arguments of the program into a string;
+ *             arguments are separated by a new line in the string.
+ * @ac: The number of arguments passed to the program.
+ * @av: An array of pointers to the arguments.
  *
- * Return: pointer to the concatenated string, or NULL on failure
+ * Return: If ac == 0, av == NULL, or the function fails - NULL.
+ *         Otherwise - a pointer to the new string.
  */
 char *argstostr(int ac, char **av)
 {
-	int i, j, len, total_len = 0;
-	char *str, *concat_str;
+	char *str;
+	int arg, byte, index, size = ac;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
 
-	for (i = 0; i < ac; i++)
+	for (arg = 0; arg < ac; arg++)
 	{
-		len = 0;
-		while (av[i][len] != '\0')
-		{
-			total_len++;
-			len++;
-		}
-		total_len++; /* Account for space character */
+		for (byte = 0; av[arg][byte]; byte++)
+			size++;
 	}
 
-	str = malloc(sizeof(char) * (total_len + 1));
+	str = malloc(sizeof(char) * size + 1);
 
 	if (str == NULL)
 		return (NULL);
 
-	concat_str = str;
+	index = 0;
 
-	for (i = 0; i < ac; i++)
+	for (arg = 0; arg < ac; arg++)
 	{
-		len = 0;
-		while (av[i][len] != '\0')
-		{
-			*str = av[i][len];
-			str++;
-			len++;
-		}
-		*str = ' '; /* Add space character between arguments */
-		str++;
+		for (byte = 0; av[arg][byte]; byte++)
+			str[index++] = av[arg][byte];
+
+		str[index++] = '\n';
 	}
 
-	*str = '\0'; /* Add null terminator at the end */
-	return (concat_str);
+	str[size] = '\0';
+
+	return (str);
 }
