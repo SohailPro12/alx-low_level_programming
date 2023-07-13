@@ -11,6 +11,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _putchar(char c);
 void print_int(unsigned long int n);
 int _atoi(const char *s);
-int _puts(char *str);
+void _puts(char *str);
 
 #endif /* MAIN_H */
