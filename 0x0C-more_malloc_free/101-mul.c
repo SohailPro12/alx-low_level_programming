@@ -14,7 +14,6 @@ int _puts(const char *str);
 int main(int argc, char *argv[])
 {
 	(void)argc;
-	unsigned long int num1, num2, result;
 
 	if (argc != 3)
 	{
@@ -22,11 +21,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	num1 = _atoi(argv[1]);
-	num2 = _atoi(argv[2]);
-	result = num1 * num2;
-
-	print_int(result);
+	print_int(_atoi(argv[1]) * _atoi(argv[2]));
 	_putchar("\n");
 
 	return (0);
