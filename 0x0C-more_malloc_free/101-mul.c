@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	result = num1 * num2;
 
 	print_int(result);
-	_puts("");
+	_putchar("\n");
 
 	return (0);
 }
