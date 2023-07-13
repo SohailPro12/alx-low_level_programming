@@ -2,7 +2,7 @@
 
 void print_int(unsigned long int n);
 int _atoi(const char *s);
-int _puts(const char *str);
+void _puts(const char *str);
 
 /**
  * main - Multiplies two positive numbers
