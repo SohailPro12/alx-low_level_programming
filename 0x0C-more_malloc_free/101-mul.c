@@ -81,16 +81,13 @@ int _atoi(const char *s)
  *
  * Return: Number of characters printed (excluding the null byte)
  */
-int _puts(const char *str)
+void _puts(const char *str)
 {
 	int count = 0;
 
-	while (*str)
+	while (*str[count])
 	{
-		_putchar(*str);
-		str++;
+		_putchar(*str[count]);
 		count++;
 	}
-
-	return (count);
 }
