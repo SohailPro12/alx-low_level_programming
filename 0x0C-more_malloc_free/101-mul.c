@@ -9,7 +9,7 @@ void _puts(const char *str);
  * @argc: Number of command-line arguments
  * @argv: Array of command-line arguments
  *
- * Return: 0 on success, 1 on error
+ * Return: 0 on success
  */
 int main(int argc, char *argv[])
 {
@@ -60,7 +60,7 @@ int _atoi(const char *s)
 	{
 		if (s[firstNum] == '-')
 		{
-			sign *=  -1;
+			sign *= -1;
 		}
 	}
 
