@@ -1,5 +1,6 @@
 #include "main.h"
 
+char *_memcpy(char *dest, char *src, unsigned int n);
 /**
  * _realloc - Reallocates a memory block using malloc and free
  * @ptr: Pointer to the memory block to be reallocated
