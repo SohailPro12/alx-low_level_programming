@@ -59,20 +59,22 @@ void print_int(int n)
 int _atoi(const char *s)
 {
 	int sign = 1;
-	int result = 0;
+	unsigned long int resp = 0, firstNum, i;
 
-	while (*s)
+	for (firstNum = 0; !(s[firstNum] >= 48 && s[firstNum] <= 57); firstNum++)
 	{
-		if (*s == '-')
-			sign = -sign;
-		else if (*s >= '0' && *s <= '9')
-			result = (result * 10) + (*s - '0');
-		else if (result != 0)
-			break;
-		s++;
+		if (s[firstNum] == '-')
+		{
+			sign *=  -1;
+		}
 	}
 
-	return (result * sign);
+	for (i = firstNum; s[i] >= 48 && s[i] <= 57; i++)
+	{
+		resp *= 10;
+		resp += (s[i] - 48);
+	}
+	return (sign * resp);
 }
 
 /**
