@@ -1,6 +1,6 @@
 #include "main.h"
 
-void print_int(int n);
+void print_int(unsigned long int n);
 int _atoi(const char *s);
 int _puts(const char *str);
 
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
  * print_int - Prints an integer
  * @n: The integer to be printed
  */
-void print_int(int n)
+void print_int(unsigned long int n)
 {
 	if (n < 0)
 	{
