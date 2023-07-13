@@ -13,6 +13,7 @@ int _puts(const char *str);
  */
 int main(int argc, char *argv[])
 {
+	(void)argc;
 	unsigned long int num1, num2, result;
 
 	if (argc != 3)
