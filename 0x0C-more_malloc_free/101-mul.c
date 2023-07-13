@@ -38,16 +38,16 @@ int main(int argc, char *argv[])
  */
 void print_int(unsigned long int n)
 {
-	if (n < 0)
+	unsigned long int divisor = 1, i, resp;
+
+	for (i = 0; n / divisor > 9; i++, divisor *= 10)
+	;
+
+	for (; divisor >= 1; n %= divisor, divisor /= 10)
 	{
-		_putchar('-');
-		n = -n;
+		resp = n / divisor;
+		_putchar('0' + resp);
 	}
-
-	if (n / 10)
-		print_int(n / 10);
-
-	_putchar((n % 10) + '0');
 }
 
 /**
