@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		_puts("Error");
-		exit(98);
+		return (1);
 	}
 
 	print_int(_atoi(argv[1]) * _atoi(argv[2]));
