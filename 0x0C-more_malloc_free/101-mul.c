@@ -50,7 +50,7 @@ int _atoi(const char *s)
  *
  * Return: Number of characters printed (excluding the null byte)
  */
-void _puts(const char *str)
+void _puts(char *str)
 {
 	int count = 0;
 
