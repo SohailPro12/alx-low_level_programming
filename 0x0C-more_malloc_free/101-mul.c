@@ -59,7 +59,6 @@ void _puts(char *str)
 		_putchar(str[count]);
 		count++;
 	}
-	_putchar('\n');
 }
 
 /**
@@ -71,10 +70,12 @@ void _puts(char *str)
  */
 int main(int argc, char *argv[])
 {
+	(void)argc;
+
 	if (argc != 3)
 	{
 		_puts("Error");
-		return (1);
+		exit(98);
 	}
 
 	print_int(_atoi(argv[1]) * _atoi(argv[2]));
