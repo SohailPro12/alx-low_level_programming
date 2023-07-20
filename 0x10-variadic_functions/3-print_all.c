@@ -53,7 +53,7 @@ void print_string(char *separator, va_list arg)
 void print_all(const char * const format, ...)
 {
 	va_list args;
-	unsigned int i = 0;
+	int i = 0, j;
 	char *sep = "";
 
 	token_t tokens[] = {
@@ -68,8 +68,7 @@ void print_all(const char * const format, ...)
 
 	while (format && format[i])
 	{
-		unsigned int j = 0;
-
+		j = 0;
 		while (tokens[j].token)
 		{
 			if (format[i] == tokens[j].token[0])
