@@ -3,46 +3,41 @@
 /**
  * print_char - Prints a character.
  * @arg: The character to print.
- * @sep: The separator string.
  */
-void print_char(va_list arg, char *sep)
+void print_char(char *separator, va_list arg)
 {
-	printf("%s%c", sep, va_arg(arg, int));
+	printf("%s%c", separator, va_arg(arg, int));
 }
 
 /**
  * print_int - Prints an integer.
  * @arg: The integer to print.
- * @sep: The separator string.
  */
-void print_int(va_list arg, char *sep)
+void print_int(char *separator, va_list arg)
 {
-	printf("%s%d", sep, va_arg(arg, int));
+	printf("%s%d", separator, va_arg(arg, int));
 }
 
 /**
  * print_float - Prints a float.
  * @arg: The float to print.
- * @sep: The separator string.
  */
-void print_float(va_list arg, char *sep)
+void print_float(char *separator, va_list arg)
 {
-	printf("%s%f", sep, va_arg(arg, double));
+	printf("%s%f", separator, va_arg(arg, double));
 }
 
 /**
  * print_string - Prints a string.
  * @arg: The string to print.
- * @sep: The separator string.
  */
-void print_string(va_list arg, char *sep)
+void print_string(char *separator, va_list arg)
 {
 	char *str = va_arg(arg, char *);
-
-	switch ((int)(!str))
-		case 1:
-			str = "(nil)";
-	printf("%s%s", sep, str);
+	if (str == NULL)
+		printf("%s(nil)", separator);
+	else
+		printf("%s%s", separator, str);
 }
 
 /**
