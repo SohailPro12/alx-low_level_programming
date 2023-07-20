@@ -34,10 +34,11 @@ void print_float(char *separator, va_list arg)
 void print_string(char *separator, va_list arg)
 {
 	char *str = va_arg(arg, char *);
-	if (str == NULL)
-		printf("%s(nil)", separator);
-	else
-		printf("%s%s", separator, str);
+
+	switch ((int)(!str))
+		case 1:
+			str = "(nil)";
+	printf("%s%s", seperator, str);
 }
 
 /**
@@ -71,13 +72,12 @@ void print_all(const char * const format, ...)
 			{
 				tokens[j].f(sep, args);
 				sep = ", ";
-				break;
 			}
 			j++;
 		}
 		i++;
 	}
 
-	va_end(args);
 	printf("\n");
+	va_end(args);
 }
