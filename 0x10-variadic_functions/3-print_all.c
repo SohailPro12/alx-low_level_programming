@@ -3,6 +3,7 @@
 /**
  * print_char - Prints a character.
  * @arg: The character to print.
+ * @separator: The separator to print before the type
  */
 void print_char(char *separator, va_list arg)
 {
@@ -12,6 +13,7 @@ void print_char(char *separator, va_list arg)
 /**
  * print_int - Prints an integer.
  * @arg: The integer to print.
+ * @separator: The separator to print before the type
  */
 void print_int(char *separator, va_list arg)
 {
@@ -21,6 +23,7 @@ void print_int(char *separator, va_list arg)
 /**
  * print_float - Prints a float.
  * @arg: The float to print.
+ * @separator: The separator to print before the type
  */
 void print_float(char *separator, va_list arg)
 {
@@ -30,6 +33,7 @@ void print_float(char *separator, va_list arg)
 /**
  * print_string - Prints a string.
  * @arg: The string to print.
+ * @separator: The separator to print before the type
  */
 void print_string(char *separator, va_list arg)
 {
