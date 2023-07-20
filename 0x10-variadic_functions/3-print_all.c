@@ -3,42 +3,46 @@
 /**
  * print_char - Prints a character.
  * @arg: The character to print.
+ * @sep: The separator string.
  */
-void print_char(va_list arg)
+void print_char(va_list arg, char *sep)
 {
-	printf("%c", va_arg(arg, int));
+	printf("%s%c", sep, va_arg(arg, int));
 }
 
 /**
  * print_int - Prints an integer.
  * @arg: The integer to print.
+ * @sep: The separator string.
  */
-void print_int(va_list arg)
+void print_int(va_list arg, char *sep)
 {
-	printf("%d", va_arg(arg, int));
+	printf("%s%d", sep, va_arg(arg, int));
 }
 
 /**
  * print_float - Prints a float.
  * @arg: The float to print.
+ * @sep: The separator string.
  */
-void print_float(va_list arg)
+void print_float(va_list arg, char *sep)
 {
-	printf("%f", va_arg(arg, double));
+	printf("%s%f", sep, va_arg(arg, double));
 }
 
 /**
  * print_string - Prints a string.
  * @arg: The string to print.
+ * @sep: The separator string.
  */
-void print_string(va_list arg)
+void print_string(va_list arg, char *sep)
 {
 	char *str = va_arg(arg, char *);
 
-	if (str == NULL)
-		printf("(nil)");
-	else
-		printf("%s", str);
+	switch ((int)(!str))
+		case 1:
+			str = "(nil)";
+	printf("%s%s", sep, str);
 }
 
 /**
@@ -52,33 +56,30 @@ void print_all(const char * const format, ...)
 	unsigned int i = 0;
 	char *sep = "";
 
+	token_t tokens[] = {
+		{"c", print_char},
+		{"i", print_int},
+		{"f", print_float},
+		{"s", print_string},
+		{NULL, NULL}
+	};
+
 	va_start(args, format);
 
 	while (format && format[i])
 	{
-		switch (format[i])
+		unsigned int j = 0;
+
+		while (tokens[j].token)
 		{
-			case 'c':
-				printf("%s", sep);
-				print_char(args);
+			if (format[i] == tokens[j].token[0])
+			{
+				tokens[j].f(sep, args);
+				sep = ", ";
 				break;
-			case 'i':
-				printf("%s", sep);
-				print_int(args);
-				break;
-			case 'f':
-				printf("%s", sep);
-				print_float(args);
-				break;
-			case 's':
-				printf("%s", sep);
-				print_string(args);
-				break;
-			default:
-				i++;
-				continue;
+			}
+			j++;
 		}
-		sep = ", ";
 		i++;
 	}
 
