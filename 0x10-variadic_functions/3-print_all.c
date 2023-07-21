@@ -42,7 +42,7 @@ void print_string(char *separator, va_list arg)
 	switch ((int)(!str))
 		case 1:
 			str = "(nil)";
-	printf("%s%s", seperator, str);
+	printf("%s%s", separator, str);
 }
 
 /**
