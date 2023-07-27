@@ -19,6 +19,6 @@ void free_list(list_t *head)
 		nnode = node->next;
 		free(node->str);
 		free(node);
-		node = next_node;
+		node = nnode;
 	}
 }
