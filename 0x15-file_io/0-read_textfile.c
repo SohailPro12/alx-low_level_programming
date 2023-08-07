@@ -22,6 +22,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	bytestobep = write(STDOUT_FILENO, &buf[0], bytestobep);
 	close(F);
 
-	return (bytes);
+	return (bytestobep);
 }
-
