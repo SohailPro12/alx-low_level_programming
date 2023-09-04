@@ -41,7 +41,7 @@ int main(int ac, char **av)
 	if (file_from)
 		dprintf(STDERR_FILENO, NOCLOSE, file_from), exit(100);
 	if (file_to)
-		dprintf(STDERR_FILENO, NOCLOSE, file_from), exit(100);
+		dprintf(STDERR_FILENO, NOCLOSE, file_to), exit(100);
 
 	return (EXIT_SUCCESS);
 }
