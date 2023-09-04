@@ -30,10 +30,10 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, NOWRITE, av[2]), exit(99);
 
 	while ((bytes = read(file_from, buffer, READ_BUF_SIZE)) > 0)
-		if (write(file_to, buffer, b) != b)
+		if (write(file_to, buffer, bytes) != bytes)
 			dprintf(STDERR_FILENO, NOWRITE, av[2]), exit(99);
 
-	if (b == -1)
+	if (bytes == -1)
 		dprintf(STDERR_FILENO, NOREAD, av[1]), exit(98);
 
 	file_from = close(file_from);
