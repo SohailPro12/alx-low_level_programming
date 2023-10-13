@@ -9,7 +9,6 @@
  */
 size_t print_dlistint(const dlistint_t *h)
 {
-
 	struct dlistint_s *current = h;
 	int i = 0;
 
