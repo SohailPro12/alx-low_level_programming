@@ -8,15 +8,15 @@
  */
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *node, *next_node;
+	dlistint_t *node;
 
 	if (!head)
 		return;
 
 	while (head)
 	{
-		next_node = head->next;
+		node = head;
+		head = head->next;
 		free(head);
-		head = next_node;
 	}
 }
